@@ -13,7 +13,7 @@ const update =(d) => {
 
 fetch('https://chat-api-cbev.onrender.com/')
   .then(response => response.json())
-  .then(datas => update(datas.data));
+  .then(datas => update(datas.data)); 
 setInterval(()=>{
    fetch('https://chat-api-cbev.onrender.com/')
   .then(response => response.json())
@@ -22,7 +22,8 @@ setInterval(()=>{
 
 form.onsubmit = () => { 
     let temp = INPUT.value
-    if(temp == null) return false 
+    INPUT.value=""
+    if(temp == null || temp == "") return false 
 
     fetch('https://chat-api-cbev.onrender.com/', {
     method: 'POST',
