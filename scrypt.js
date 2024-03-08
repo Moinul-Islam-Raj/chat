@@ -18,12 +18,15 @@ setInterval(()=>{
    fetch('https://chat-api-cbev.onrender.com/')
   .then(response => response.json())
   .then(datas => update(datas.data));
-},4000)
+},3000)
 
 form.onsubmit = () => { 
+    let temp = INPUT.value
+    if(temp == null) return false 
+
     fetch('https://chat-api-cbev.onrender.com/', {
     method: 'POST',
-    body: JSON.stringify({ text:INPUT.value }),
+    body: JSON.stringify({ text:temp }),
     headers: {
         'Content-type': 'application/json; charset=UTF-8'
     }
@@ -31,7 +34,6 @@ form.onsubmit = () => {
     .then(response => response.json())
     .then(datas => {
 		update(datas.data)
-		INPUT.value=""
 	});
     return false
 }
