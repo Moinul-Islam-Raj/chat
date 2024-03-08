@@ -11,11 +11,14 @@ const update =(d) => {
     msgs.innerHTML=str
 }
 
-
-    fetch('https://chat-api-cbev.onrender.com/')
+fetch('https://chat-api-cbev.onrender.com/')
   .then(response => response.json())
   .then(datas => update(datas.data));
-
+setInterval(()=>{
+   fetch('https://chat-api-cbev.onrender.com/')
+  .then(response => response.json())
+  .then(datas => update(datas.data));
+},4000)
 
 form.onsubmit = () => { 
     fetch('https://chat-api-cbev.onrender.com/', {
