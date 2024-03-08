@@ -1,48 +1,45 @@
-const CLEAR_btn = document.getElementsByTagName("button")[0]
-const msgs = document.getElementsByClassName("messages")[0]
+const CLEAR_BTN = document.getElementById("clear")
+const MESSAGES = document.getElementById("main")
 const INPUT = document.getElementById("input")
-const form = document.getElementsByTagName("form")[0]
+const SUBMIT_BTN = document.getElementById("submit")
+const form = document.getElementById("form")
 
-const update =(d) => {
-    let str=""
-    for(let i=0;i<d.length;i++){
-        str= `<div class="message">${d[i]}</div>` +str
-    }
-    msgs.innerHTML=str
+const url = "https://messages-api-v5bk.onrender.com/api/messages"
+
+const update =() => {
+    fetch(url)
+    .then(response => response.json())
+    .then(res => {
+        let str=""
+        for(let i=0;i<res.length;i++){
+            str= `<div class="message">${res[i].text}</div>` +str
+        }
+        MESSAGES.innerHTML=str
+    }); 
 }
 
-fetch('https://chat-api-cbev.onrender.com/')
-  .then(response => response.json())
-  .then(datas => update(datas.data)); 
-setInterval(()=>{
-   fetch('https://chat-api-cbev.onrender.com/')
-  .then(response => response.json())
-  .then(datas => update(datas.data));
-},3000)
+update();
+setInterval(update,3000);
 
 form.onsubmit = () => { 
-    let temp = INPUT.value
+    const text = INPUT.value
     INPUT.value=""
-    if(temp == null || temp == "") return false 
+    if(text == null || text == "") return false
 
-    fetch('https://chat-api-cbev.onrender.com/', {
-    method: 'POST',
-    body: JSON.stringify({ text:temp }),
-    headers: {
-        'Content-type': 'application/json; charset=UTF-8'
-    }
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({ text }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
     })
-    .then(response => response.json())
-    .then(datas => {
-		update(datas.data)
-	});
+    .then(() => update());
     return false
 }
 
-CLEAR_btn.onclick = () => {
-    fetch('https://chat-api-cbev.onrender.com/', {
+CLEAR_BTN.onclick = () => {
+    fetch(url, {
         method: 'DELETE'
     })
-    .then(response => response.json())
-    .then(datas => update(datas.data));
+    .then(() => update());
 }
