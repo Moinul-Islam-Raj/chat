@@ -52,6 +52,7 @@ form.onsubmit = () => {
 }
 
 CLEAR_BTN.onclick = () => {
+    if (INPUT2.value.toUpperCase() != "RAJ") return alert("You are not admin. You are not allowed to clear messages.")
     fetch(url, {
         method: 'DELETE'
     })
