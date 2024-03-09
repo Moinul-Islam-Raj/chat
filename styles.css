@@ -23,6 +23,15 @@ nav{
     color: white;
     z-index: 99;
 }
+#name{
+ width: 20%;
+ min-width: 120px;
+ padding: 5px;
+ border-radius: 10px;
+ border: none;
+ outline: none;
+ text-align: center;
+}
 
 .inputBar{
     max-width: 100%;
@@ -62,18 +71,52 @@ nav{
     margin-bottom: 110px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    align-items: end;
     max-width: calc(100% - 40px);
     width: 100vw;
     padding: 5px 20px;
     gap: 10px;
+    text-align: center;
+}
+.right{
+    margin-left: auto;
+    border-radius: 15px 0 15px 15px;
+    background: #452626;
+}
+.left{
+    margin-right: auto;
+    border-radius: 0px 15px 15px 15px;
+    background-color: rgb(34, 48, 48);
 }
 
 .message{
     padding: 10px 15px;
     color: white;
-    background: #272424;
     border: none;
-    border-radius: 15px 0 15px 15px;
+    font-size: larger;
+}
+
+.message p{
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+.details{
+    font-size: x-small;
+    color: #a1a1a1;
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+#clear{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+}
+
+button:hover{
+    opacity: 0.85;
+    cursor: pointer;
 }
