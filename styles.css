@@ -45,12 +45,12 @@ nav{
 }
 
 #input {
-    min-width: 60%;
+    width: 55%;
     font-family: sans-serif;
     color: rgb(0, 0, 0);
     background-color: #e7e7e7;
     border: none;
-    border-radius: 20px 0px 0px 20px;
+    border-radius: 0;
     padding: 5px 20px; 
     font-size: large;
     height: 30px;
@@ -100,6 +100,10 @@ nav{
     margin-bottom: 4px;
 }
 
+.message img{
+    width: min(400px, 80vw);
+}
+
 .details{
     font-size: x-small;
     color: #a1a1a1;
@@ -119,4 +123,30 @@ nav{
 button:hover{
     opacity: 0.85;
     cursor: pointer;
+}
+
+#file{
+    display: none;
+}
+#label{
+    border: none;
+    border-radius: 20px 0px 0px 20px;
+    padding: 5px 20px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: green;
+    color: white;
+    margin: 0;
+    max-width: 70PX;
+    overflow:hidden;
+}
+#label:hover{
+    cursor: pointer;
+    opacity:0.8;
+}
+
+#label:active{
+    opacity:0.8;
 }
